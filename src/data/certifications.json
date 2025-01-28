@@ -1,0 +1,31 @@
+{
+  "title": "Certifications",
+  "description": "Professional certifications and achievements that demonstrate my expertise.",
+  "certifications": [
+    {
+      "id": "1",
+      "title": "AWS Solutions Architect Associate",
+      "platform": "Amazon Web Services",
+      "issueDate": "2024-01",
+      "expiryDate": "2027-01",
+      "credentialId": "AWS-123456",
+      "verificationUrl": "https://aws.amazon.com/verify",
+      "skills": ["AWS", "Cloud Architecture", "DevOps"],
+      "image": "/certifications/aws-saa.png"
+    }
+  ],
+  "platforms": [
+    "Amazon Web Services",
+    "Microsoft",
+    "Google Cloud",
+    "Coursera",
+    "Udemy"
+  ],
+  "skillCategories": [
+    "Cloud Computing",
+    "DevOps",
+    "Web Development",
+    "Mobile Development",
+    "Machine Learning"
+  ]
+}
