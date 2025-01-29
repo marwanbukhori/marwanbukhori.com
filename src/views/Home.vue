@@ -222,8 +222,8 @@ onMounted(() => {
                 <div class="flex gap-2">
                   <Button variant="outline" size="sm" class="w-full">
                     <a
-                      href="/apps/frontend/MarwanBukhori_Resume_2025.pdf"
-                      download="MarwanBukhori_Resume.pdf"
+                      href="/documents/MarwanBukhori_Resume.pdf"
+                      download
                       class="w-full flex items-center justify-center gap-2"
                     >
                       <Download class="w-4 h-4" />
