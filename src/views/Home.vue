@@ -13,19 +13,17 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import TheNavigation from "@/components/TheNavigation.vue";
+import { Github, Linkedin, Download, Send } from 'lucide-vue-next';
+import TechStack from "@/components/TechStack.vue";
+import { RouterLink } from 'vue-router';
 
 const activeTab = ref("about");
 const progress = ref(0);
 
 // Actual data based on resume
 const stats = {
-  totalProjects: 15,
-  githubStars: 128,
-  technologies: {
-    frontend: 35,
-    backend: 45,
-    devops: 20,
-  },
+  totalProjects: 3,
+  totalCertifications: 3,
 };
 
 const skills = [
@@ -200,17 +198,21 @@ onMounted(() => {
                     <a
                       href="https://github.com/marwanbukhori"
                       target="_blank"
-                      class="w-full"
-                      >GitHub</a
+                      class="w-full flex items-center justify-center gap-2"
                     >
+                      <Github class="w-4 h-4" />
+                      GitHub
+                    </a>
                   </Button>
                   <Button variant="outline" size="sm" class="w-full">
                     <a
                       href="https://linkedin.com/in/marwanbukhori"
                       target="_blank"
-                      class="w-full"
-                      >LinkedIn</a
+                      class="w-full flex items-center justify-center gap-2"
                     >
+                      <Linkedin class="w-4 h-4" />
+                      LinkedIn
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -222,12 +224,17 @@ onMounted(() => {
                     <a
                       href="/apps/frontend/MarwanBukhori_Resume_2025.pdf"
                       download="MarwanBukhori_Resume.pdf"
-                      class="w-full"
-                      >Download Resume</a
+                      class="w-full flex items-center justify-center gap-2"
                     >
+                      <Download class="w-4 h-4" />
+                      Download Resume
+                    </a>
                   </Button>
                   <Button size="sm" class="w-full">
-                    <a href="/contact" class="w-full">Contact Me</a>
+                    <a href="/contact" class="w-full flex items-center justify-center gap-2">
+                      <Send class="w-4 h-4" />
+                      Contact Me
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -262,31 +269,34 @@ onMounted(() => {
               </CardHeader>
               <CardContent>
                 <div class="text-2xl font-bold">
-                  <!-- {{ stats.githubStars }} -->
                   2.5+
                 </div>
               </CardContent>
             </Card>
-            <Card>
-              <CardHeader class="pb-2">
-                <CardTitle class="text-sm font-medium">Projects</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div class="text-2xl font-bold">
-                  {{ stats.totalProjects }}
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader class="pb-2">
-                <CardTitle class="text-sm font-medium"
-                  >Certifications</CardTitle
-                >
-              </CardHeader>
-              <CardContent>
-                <div class="text-2xl font-bold">{{ stats.githubStars }}</div>
-              </CardContent>
-            </Card>
+            <router-link to="/projects" class="cursor-pointer transition-transform hover:scale-105">
+              <Card>
+                <CardHeader class="pb-2">
+                  <CardTitle class="text-sm font-medium">Total Projects</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div class="text-2xl font-bold">
+                    {{ stats.totalProjects }}
+                  </div>
+                </CardContent>
+              </Card>
+            </router-link>
+            <router-link to="/certifications" class="cursor-pointer transition-transform hover:scale-105">
+              <Card>
+                <CardHeader class="pb-2">
+                  <CardTitle class="text-sm font-medium"
+                    >Total Certifications</CardTitle
+                  >
+                </CardHeader>
+                <CardContent>
+                  <div class="text-2xl font-bold">{{ stats.totalCertifications }}</div>
+                </CardContent>
+              </Card>
+            </router-link>
           </div>
 
           <!-- Timeline -->
@@ -428,112 +438,7 @@ onMounted(() => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div class="space-y-8">
-            <!-- Languages -->
-            <div class="space-y-4">
-              <h3 class="font-semibold text-lg">Programming Languages</h3>
-              <div
-                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
-              >
-                <div
-                  v-for="lang in ['TypeScript', 'PHP', 'Python', 'Dart']"
-                  :key="lang"
-                  class="flex flex-col items-center p-4 bg-muted rounded-lg hover:bg-muted/80 transition-colors"
-                >
-                  <img
-                    :src="`/icons/${lang.toLowerCase()}.svg`"
-                    :alt="lang"
-                    class="w-12 h-12 mb-2"
-                  />
-                  <span class="text-sm font-medium">{{ lang }}</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Frontend -->
-            <div class="space-y-4">
-              <h3 class="font-semibold text-lg">Frontend Technologies</h3>
-              <div
-                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
-              >
-                <div
-                  v-for="tech in [
-                    'Vue',
-                    'HTML',
-                    'CSS',
-                    'Tailwind',
-                    'Flutter',
-                    'React Native',
-                  ]"
-                  :key="tech"
-                  class="flex flex-col items-center p-4 bg-muted rounded-lg hover:bg-muted/80 transition-colors"
-                >
-                  <img
-                    :src="`/icons/${tech.toLowerCase().replace(' ', '-')}.svg`"
-                    :alt="tech"
-                    class="w-12 h-12 mb-2"
-                  />
-                  <span class="text-sm font-medium">{{ tech }}</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Backend -->
-            <div class="space-y-4">
-              <h3 class="font-semibold text-lg">Backend & Databases</h3>
-              <div
-                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
-              >
-                <div
-                  v-for="tech in [
-                    'NestJS',
-                    'Laravel',
-                    'Django',
-                    'MySQL',
-                    'PostgreSQL',
-                    'Redis',
-                  ]"
-                  :key="tech"
-                  class="flex flex-col items-center p-4 bg-muted rounded-lg hover:bg-muted/80 transition-colors"
-                >
-                  <img
-                    :src="`/icons/${tech.toLowerCase().replace(' ', '-')}.svg`"
-                    :alt="tech"
-                    class="w-12 h-12 mb-2"
-                  />
-                  <span class="text-sm font-medium">{{ tech }}</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- DevOps & Tools -->
-            <div class="space-y-4">
-              <h3 class="font-semibold text-lg">DevOps & Tools</h3>
-              <div
-                class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
-              >
-                <div
-                  v-for="tool in [
-                    'Docker',
-                    'Kubernetes',
-                    'AWS',
-                    'Git',
-                    'Jest',
-                    'Cypress',
-                  ]"
-                  :key="tool"
-                  class="flex flex-col items-center p-4 bg-muted rounded-lg hover:bg-muted/80 transition-colors"
-                >
-                  <img
-                    :src="`/icons/${tool.toLowerCase().replace(' ', '-')}.svg`"
-                    :alt="tool"
-                    class="w-12 h-12 mb-2"
-                  />
-                  <span class="text-sm font-medium">{{ tool }}</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <TechStack />
         </CardContent>
       </Card>
     </section>

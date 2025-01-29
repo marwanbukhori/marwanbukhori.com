@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,80 +11,10 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import TheNavigation from "@/components/TheNavigation.vue";
+import { useProjects, type Project } from "@/composables/useProjects";
 
-const projects = [
-  {
-    title: "RONPOS E-Invoice System",
-    description:
-      "Microservice for handling e-invoicing in RONPOS POS system, serving major clients like Shell and BH Petrol.",
-    image: "/projects/ronpos.png",
-    technologies: ["NestJS", "Vue 3", "AWS", "Docker", "TypeScript"],
-    type: "Professional",
-    highlights: [
-      "Implemented serverless architecture using AWS services",
-      "Built microservices with NestJS and Vue 3",
-      "Integrated with AWS Kinesis, Lambda, SQS, DynamoDB",
-      "Implemented comprehensive testing with Jest and Cypress",
-    ],
-    links: {
-      live: null, // Private project
-      github: null, // Private repository
-    },
-  },
-  {
-    title: "Site Business Operation Module",
-    description:
-      "Core module in RONPOS for managing business operations, handling large-scale data processing and reporting.",
-    image: "/projects/sbo.png",
-    technologies: ["Laravel", "Vue", "MySQL", "AWS", "Docker"],
-    type: "Professional",
-    highlights: [
-      "Optimized SQL queries for billion-row tables",
-      "Implemented database indexing strategies",
-      "Enhanced report generation workflows",
-      "Integrated with multiple POS systems",
-    ],
-    links: {
-      live: null,
-      github: null,
-    },
-  },
-  {
-    title: "Individual Portfolio",
-    description:
-      "Modern, responsive personal portfolio website built with Vue 3 and Tailwind CSS.",
-    image: "/projects/portfolio.png",
-    technologies: ["Vue 3", "TypeScript", "Tailwind CSS", "shadcn-vue"],
-    type: "Individual",
-    highlights: [
-      "Modern UI with shadcn-vue components",
-      "Responsive design for all devices",
-      "Dark mode support",
-      "Performance optimized",
-    ],
-    links: {
-      live: "https://marwanbukhori.dev",
-      github: "https://github.com/marwanbukhori/portfolio",
-    },
-  },
-  // Add more projects as needed
-];
-
-const filterTypes = ["All", "Professional", "Individual"];
+const { projects, filterTypes, stats, DEFAULT_IMAGE, handleImageError } = useProjects();
 const selectedFilter = ref("All");
-
-// Computed stats
-const stats = computed(() => {
-  const allTechnologies = projects.flatMap((p) => p.technologies);
-  const uniqueTechnologies = new Set(allTechnologies);
-
-  return {
-    total: projects.length,
-    professional: projects.filter((p) => p.type === "Professional").length,
-    individual: projects.filter((p) => p.type === "Individual").length,
-    technologies: uniqueTechnologies.size,
-  };
-});
 </script>
 
 <template>
@@ -124,7 +54,7 @@ const stats = computed(() => {
           <CardContent>
             <div class="text-2xl font-bold">{{ stats.professional }}</div>
             <p class="text-xs text-muted-foreground">
-              Enterprise-level projects
+              Projects related to professional work
             </p>
           </CardContent>
         </Card>
@@ -136,19 +66,19 @@ const stats = computed(() => {
           <CardContent>
             <div class="text-2xl font-bold">{{ stats.individual }}</div>
             <p class="text-xs text-muted-foreground">
-              Side projects and experiments
+             Projects related to personal projects and experiments
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader class="pb-2">
-            <CardTitle class="text-sm font-medium">Technologies Used</CardTitle>
+            <CardTitle class="text-sm font-medium">Freelance Projects</CardTitle>
           </CardHeader>
           <CardContent>
-            <div class="text-2xl font-bold">{{ stats.technologies }}</div>
+            <div class="text-2xl font-bold">{{ stats.freelance }}</div>
             <p class="text-xs text-muted-foreground">
-              Unique technologies across projects
+              Projects related to clients and freelance work
             </p>
           </CardContent>
         </Card>
@@ -170,7 +100,7 @@ const stats = computed(() => {
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <Card
           v-for="project in projects.filter(
-            (p) => selectedFilter === 'All' || p.type === selectedFilter
+            (p: Project) => selectedFilter === 'All' || p.type === selectedFilter
           )"
           :key="project.title"
           class="flex flex-col overflow-hidden group hover:shadow-lg transition-all duration-300"
@@ -178,8 +108,9 @@ const stats = computed(() => {
           <!-- Project Image -->
           <div class="relative aspect-video overflow-hidden bg-muted">
             <img
-              :src="project.image"
+              :src="project.image || DEFAULT_IMAGE"
               :alt="project.title"
+              @error="handleImageError"
               class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
             />
             <div class="absolute top-2 right-2">

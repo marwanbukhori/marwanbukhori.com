@@ -4,6 +4,8 @@ import projectsData from '@/data/projects.json'
 import certificationsData from '@/data/certifications.json'
 
 export function usePortfolioData() {
+  console.log('Loading certifications data:', certificationsData);
+
   const contact = ref(contactData)
   const projects = ref(projectsData)
   const certifications = ref(certificationsData)
@@ -21,6 +23,7 @@ export function usePortfolioData() {
 
   // Certification statistics
   const certificationStats = computed(() => {
+    console.log('Computing certification stats:', certifications.value);
     const allCertifications = certifications.value.certifications
     return {
       total: allCertifications.length,

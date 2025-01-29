@@ -20,6 +20,9 @@ import {
 } from "@/components/ui/select/";
 import TheNavigation from "@/components/TheNavigation.vue";
 import { usePortfolioData } from "@/composables/usePortfolioData";
+import { Mail, MapPin, Briefcase, Clock, Github, Linkedin, Twitter } from 'lucide-vue-next';
+import type { FunctionalComponent } from 'vue';
+import type { LucideIcon } from 'lucide-vue-next';
 
 const { contact } = usePortfolioData();
 
@@ -28,6 +31,18 @@ const email = ref("");
 const projectType = ref("");
 const message = ref("");
 const budget = ref("");
+
+type SocialIconName = 'LinkedIn' | 'GitHub' | 'Twitter';
+
+const icons: Record<SocialIconName, FunctionalComponent> = {
+  'LinkedIn': Linkedin,
+  'GitHub': Github,
+  'Twitter': Twitter
+};
+
+const getSocialIcon = (name: string): FunctionalComponent | undefined => {
+  return icons[name as SocialIconName];
+};
 
 const projectTypes = [
   "Web Application",
@@ -83,7 +98,7 @@ const handleSubmit = () => {
               <!-- Contact Details -->
               <div class="space-y-4">
                 <div class="flex items-start space-x-4">
-                  <div class="w-5 h-5 mt-1 i-lucide-mail text-muted-foreground" />
+                  <Mail class="w-5 h-5 mt-1 text-muted-foreground" />
                   <div>
                     <h3 class="font-medium">Email</h3>
                     <a
@@ -96,9 +111,7 @@ const handleSubmit = () => {
                 </div>
 
                 <div class="flex items-start space-x-4">
-                  <div
-                    class="w-5 h-5 mt-1 i-lucide-map-pin text-muted-foreground"
-                  />
+                  <MapPin class="w-5 h-5 mt-1 text-muted-foreground" />
                   <div>
                     <h3 class="font-medium">Location</h3>
                     <p class="text-sm text-muted-foreground">
@@ -108,9 +121,7 @@ const handleSubmit = () => {
                 </div>
 
                 <div class="flex items-start space-x-4">
-                  <div
-                    class="w-5 h-5 mt-1 i-lucide-briefcase text-muted-foreground"
-                  />
+                  <Briefcase class="w-5 h-5 mt-1 text-muted-foreground" />
                   <div>
                     <h3 class="font-medium">Availability</h3>
                     <p class="text-sm text-muted-foreground">
@@ -120,9 +131,7 @@ const handleSubmit = () => {
                 </div>
 
                 <div class="flex items-start space-x-4">
-                  <div
-                    class="w-5 h-5 mt-1 i-lucide-clock text-muted-foreground"
-                  />
+                  <Clock class="w-5 h-5 mt-1 text-muted-foreground" />
                   <div>
                     <h3 class="font-medium">Response Time</h3>
                     <p class="text-sm text-muted-foreground">
@@ -143,7 +152,10 @@ const handleSubmit = () => {
                     target="_blank"
                     class="p-2 rounded-full hover:bg-muted transition-colors"
                   >
-                    <div :class="[link.icon, 'w-5 h-5']" />
+                    <component
+                      :is="getSocialIcon(link.name)"
+                      class="w-5 h-5"
+                    />
                   </a>
                 </div>
               </div>
