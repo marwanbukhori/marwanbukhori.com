@@ -13,9 +13,9 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import TheNavigation from "@/components/TheNavigation.vue";
-import { Github, Linkedin, Download, Send } from 'lucide-vue-next';
+import { Github, Linkedin, Download, Send } from "lucide-vue-next";
 import TechStack from "@/components/TechStack.vue";
-import { RouterLink } from 'vue-router';
+import { RouterLink } from "vue-router";
 
 const activeTab = ref("about");
 const progress = ref(0);
@@ -132,7 +132,7 @@ onMounted(() => {
             <CardHeader class="text-center">
               <Avatar class="w-32 h-32 mx-auto mb-4">
                 <AvatarImage
-                  src="/src/assets/img/marwanbukhori.jpeg"
+                  src="/images/profile/marwanbukhori.jpeg"
                   alt="Marwan Bukhori"
                 />
                 <AvatarFallback class="text-4xl">MB</AvatarFallback>
@@ -231,7 +231,10 @@ onMounted(() => {
                     </a>
                   </Button>
                   <Button size="sm" class="w-full">
-                    <a href="/contact" class="w-full flex items-center justify-center gap-2">
+                    <a
+                      href="/contact"
+                      class="w-full flex items-center justify-center gap-2"
+                    >
                       <Send class="w-4 h-4" />
                       Contact Me
                     </a>
@@ -268,15 +271,18 @@ onMounted(() => {
                 >
               </CardHeader>
               <CardContent>
-                <div class="text-2xl font-bold">
-                  2.5+
-                </div>
+                <div class="text-2xl font-bold">2.5+</div>
               </CardContent>
             </Card>
-            <router-link to="/projects" class="cursor-pointer transition-transform hover:scale-105">
+            <router-link
+              to="/projects"
+              class="cursor-pointer transition-transform hover:scale-105"
+            >
               <Card>
                 <CardHeader class="pb-2">
-                  <CardTitle class="text-sm font-medium">Total Projects</CardTitle>
+                  <CardTitle class="text-sm font-medium"
+                    >Total Projects</CardTitle
+                  >
                 </CardHeader>
                 <CardContent>
                   <div class="text-2xl font-bold">
@@ -285,7 +291,10 @@ onMounted(() => {
                 </CardContent>
               </Card>
             </router-link>
-            <router-link to="/certifications" class="cursor-pointer transition-transform hover:scale-105">
+            <router-link
+              to="/certifications"
+              class="cursor-pointer transition-transform hover:scale-105"
+            >
               <Card>
                 <CardHeader class="pb-2">
                   <CardTitle class="text-sm font-medium"
@@ -293,7 +302,9 @@ onMounted(() => {
                   >
                 </CardHeader>
                 <CardContent>
-                  <div class="text-2xl font-bold">{{ stats.totalCertifications }}</div>
+                  <div class="text-2xl font-bold">
+                    {{ stats.totalCertifications }}
+                  </div>
                 </CardContent>
               </Card>
             </router-link>
