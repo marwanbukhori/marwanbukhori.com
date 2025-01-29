@@ -231,13 +231,13 @@ onMounted(() => {
                     </a>
                   </Button>
                   <Button size="sm" class="w-full">
-                    <a
-                      href="/contact"
+                    <router-link
+                      to="/contact"
                       class="w-full flex items-center justify-center gap-2"
                     >
                       <Send class="w-4 h-4" />
                       Contact Me
-                    </a>
+                    </router-link>
                   </Button>
                 </div>
               </div>
