@@ -13,7 +13,8 @@ import { Badge } from "@/components/ui/badge";
 import TheNavigation from "@/components/TheNavigation.vue";
 import { useProjects, type Project } from "@/composables/useProjects";
 
-const { projects, filterTypes, stats, DEFAULT_IMAGE, handleImageError } = useProjects();
+const { projects, filterTypes, stats, DEFAULT_IMAGE, handleImageError } =
+  useProjects();
 const selectedFilter = ref("All");
 </script>
 
@@ -66,19 +67,21 @@ const selectedFilter = ref("All");
           <CardContent>
             <div class="text-2xl font-bold">{{ stats.individual }}</div>
             <p class="text-xs text-muted-foreground">
-             Projects related to personal projects and experiments
+              Projects related to personal projects and experiments
             </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader class="pb-2">
-            <CardTitle class="text-sm font-medium">Freelance Projects</CardTitle>
+            <CardTitle class="text-sm font-medium"
+              >Freelance Projects</CardTitle
+            >
           </CardHeader>
           <CardContent>
             <div class="text-2xl font-bold">{{ stats.freelance }}</div>
             <p class="text-xs text-muted-foreground">
-              Projects related to clients and freelance work
+              Projects related to clients and freelance work (still 0 hehe)
             </p>
           </CardContent>
         </Card>
@@ -100,7 +103,8 @@ const selectedFilter = ref("All");
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <Card
           v-for="project in projects.filter(
-            (p: Project) => selectedFilter === 'All' || p.type === selectedFilter
+            (p: Project) =>
+              selectedFilter === 'All' || p.type === selectedFilter
           )"
           :key="project.title"
           class="flex flex-col overflow-hidden group hover:shadow-lg transition-all duration-300"

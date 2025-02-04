@@ -15,41 +15,57 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
         <Card>
           <CardHeader class="pb-2">
-            <CardTitle class="text-sm font-medium">Latest Achievement</CardTitle>
+            <CardTitle class="text-sm font-medium"
+              >Latest Achievement</CardTitle
+            >
           </CardHeader>
           <CardContent>
             <div class="text-2xl font-bold">{{ stats.latest }}</div>
-            <p class="text-xs text-muted-foreground">Most recent certification</p>
+            <p class="text-xs text-muted-foreground">
+              Most recent certification
+            </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader class="pb-2">
-            <CardTitle class="text-sm font-medium">Total Certifications</CardTitle>
+            <CardTitle class="text-sm font-medium"
+              >Total Certifications</CardTitle
+            >
           </CardHeader>
           <CardContent>
             <div class="text-2xl font-bold">{{ stats.total }}</div>
-            <p class="text-xs text-muted-foreground">Total earned certifications</p>
+            <p class="text-xs text-muted-foreground">
+              Total earned certifications
+            </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader class="pb-2">
-            <CardTitle class="text-sm font-medium">Technical Certifications</CardTitle>
+            <CardTitle class="text-sm font-medium"
+              >Technical Certifications</CardTitle
+            >
           </CardHeader>
           <CardContent>
             <div class="text-2xl font-bold">{{ stats.technical }}</div>
-            <p class="text-xs text-muted-foreground">Technical and IT-related certifications</p>
+            <p class="text-xs text-muted-foreground">
+              Technical and IT-related certifications
+            </p>
           </CardContent>
         </Card>
 
         <Card>
           <CardHeader class="pb-2">
-            <CardTitle class="text-sm font-medium">Non-Technical Certifications</CardTitle>
+            <CardTitle class="text-sm font-medium"
+              >Non-Technical Certifications</CardTitle
+            >
           </CardHeader>
           <CardContent>
             <div class="text-2xl font-bold">{{ stats.nonTechnical }}</div>
-            <p class="text-xs text-muted-foreground">Professional development and soft skills</p>
+            <p class="text-xs text-muted-foreground">
+              Professional development and soft skills
+            </p>
           </CardContent>
         </Card>
       </div>
@@ -63,12 +79,18 @@
         >
           <!-- Certificate Image -->
           <div class="relative aspect-video overflow-hidden bg-muted">
-            <img
-              :src="cert.image || DEFAULT_IMAGE"
-              :alt="cert.title"
-              @error="handleImageError"
-              class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-            />
+            <object
+              :data="`/certifications/${cert.id}.pdf#page=1`"
+              type="application/pdf"
+              class="w-full h-full object-contain"
+            >
+              <img
+                :src="cert.image || DEFAULT_IMAGE"
+                :alt="cert.title"
+                @error="handleImageError"
+                class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+              />
+            </object>
             <div class="absolute top-2 right-2">
               <Badge>{{ cert.type }}</Badge>
             </div>
@@ -93,7 +115,9 @@
 
             <!-- Details -->
             <div class="space-y-2">
-              <div class="flex items-center gap-2 text-sm text-muted-foreground">
+              <div
+                class="flex items-center gap-2 text-sm text-muted-foreground"
+              >
                 <span>Issued: {{ cert.issueDate }}</span>
                 <span>•</span>
                 <span>Expires: {{ cert.expiryDate }}</span>
@@ -107,11 +131,11 @@
           <CardFooter class="flex gap-2">
             <Button variant="outline" size="sm" class="w-full">
               <a
-                :href="cert.verificationUrl"
+                :href="`/certifications/${cert.id}.pdf`"
                 target="_blank"
-                class="w-full"
+                class="w-full flex items-center justify-center gap-2"
               >
-                Verify Certificate
+                View Certificate
               </a>
             </Button>
           </CardFooter>
@@ -125,7 +149,6 @@
 import { ref, computed, onMounted } from "vue";
 import { Button } from "@/components/ui/button";
 import {
-
   Card,
   CardContent,
   CardDescription,
@@ -135,12 +158,17 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import TheNavigation from "@/components/TheNavigation.vue";
-import { useCertifications, type Certification } from "@/composables/useCertifications";
+import {
+  useCertifications,
+  type Certification,
+} from "@/composables/useCertifications";
+import { Download } from "lucide-vue-next";
 
-const { certifications, stats, DEFAULT_IMAGE, handleImageError } = useCertifications();
+const { certifications, stats, DEFAULT_IMAGE, handleImageError } =
+  useCertifications();
 
 onMounted(() => {
-  console.log('Component mounted');
-  console.log('Initial certifications:', certifications.value);
+  console.log("Component mounted");
+  console.log("Initial certifications:", certifications.value);
 });
 </script>

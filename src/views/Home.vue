@@ -75,38 +75,38 @@ const certifications = [
 
 const timeline = [
   {
-    year: "2024",
+    year: "2024 - Present",
     events: [
       {
         title: "Software Engineer",
         company: "Silentmode Sdn. Bhd.",
         period: "Aug 2024 - Present",
         description:
-          "Working on RONPOS core team focusing on E-Invoice System (EIS) for clients like Shell and BH Petrol. Implementing microservices architecture with Vue3 frontend and NestJS backend.",
+          "Joined RONPOS core team through sister company (Terato Tech) acquisition, focusing on E-Invoice System (EIS) development",
       },
     ],
   },
   {
-    year: "2023",
+    year: "2023 - 2024",
     events: [
       {
         title: "Junior Software Engineer",
         company: "Terato Tech Sdn. Bhd.",
         period: "Feb 2023 - Aug 2024",
         description:
-          "Worked on Site Business Operation (SBO) Team for RONPOS, a POS fuel system. Handled support tickets and developed new features using Laravel, Vue, NestJS, and AWS.",
+          "Joined Terato Tech as a Junior Software Engineer - outsourced to Silentmode's project. Back Office System (BOS) Developer working on RONPOS - POS fuel system for Shell, BHPetrol and PETRONAS",
       },
     ],
   },
   {
-    year: "2022",
+    year: "2022 - 2023",
     events: [
       {
         title: "Internship Software Developer",
         company: "Terato Tech Sdn. Bhd.",
         period: "Sept 2022 - Feb 2023",
         description:
-          "Developed mobile app screens using React Native and implemented backend features with Laravel CMS.",
+          "Intern as Backend and Mobile Developer utilizing Laravel Livewire and React Native. Working on Betaqwa - a platform for Masjid / Kuliah management and Islamic activities",
       },
     ],
   },
@@ -222,23 +222,24 @@ onMounted(() => {
                 <div class="flex gap-2">
                   <Button variant="outline" size="sm" class="w-full">
                     <a
-                      href="/documents/MarwanBukhori_Resume.pdf"
-                      download
+                      href="/documents/MarwanBukhori_Resume_2025.pdf"
+                      download="MarwanBukhori_Resume_2025.pdf"
                       class="w-full flex items-center justify-center gap-2"
                     >
                       <Download class="w-4 h-4" />
                       Download Resume
                     </a>
                   </Button>
-                  <Button size="sm" class="w-full">
-                    <router-link
-                      to="/contact"
-                      class="w-full flex items-center justify-center gap-2"
-                    >
-                      <Send class="w-4 h-4" />
-                      Contact Me
-                    </router-link>
-                  </Button>
+                  <router-link to="/contact" custom v-slot="{ navigate }">
+                    <Button size="sm" class="w-full" @click="navigate">
+                      <div
+                        class="w-full flex items-center justify-center gap-2"
+                      >
+                        <Send class="w-4 h-4" />
+                        Contact Me
+                      </div>
+                    </Button>
+                  </router-link>
                 </div>
               </div>
             </CardContent>
@@ -288,6 +289,7 @@ onMounted(() => {
                   <div class="text-2xl font-bold">
                     {{ stats.totalProjects }}
                   </div>
+                  <p class="text-xs text-muted-foreground">Click to view</p>
                 </CardContent>
               </Card>
             </router-link>
@@ -305,6 +307,7 @@ onMounted(() => {
                   <div class="text-2xl font-bold">
                     {{ stats.totalCertifications }}
                   </div>
+                  <p class="text-xs text-muted-foreground">Click to view</p>
                 </CardContent>
               </Card>
             </router-link>
@@ -326,10 +329,10 @@ onMounted(() => {
                   class="relative"
                 >
                   <div
-                    class="absolute left-0 top-0 w-4 h-4 bg-primary rounded-full -translate-x-1/2"
+                    class="absolute left-0 top-2 w-4 h-4 bg-primary rounded-full -translate-x-1/2"
                   ></div>
                   <div class="ml-8 space-y-4">
-                    <div class="font-bold text-xl">{{ period.year }}</div>
+                    <!-- <div class="font-bold text-xl">{{ period.year }}</div> -->
                     <div
                       v-for="event in period.events"
                       :key="event.title"
@@ -354,26 +357,47 @@ onMounted(() => {
                         <div class="ml-4 space-y-2">
                           <template v-if="event.title === 'Software Engineer'">
                             <li class="text-sm">
-                              Developed microservices using NestJS and Vue3,
-                              implementing core functionalities for the
-                              E-Invoice System
+                              Member of E-Invoice System (EIS) Team which is
+                              core functionalities for RONPOS which used on
+                              thousands of petrol stations nationwide
                             </li>
                             <li class="text-sm">
-                              Implemented AWS services including Kinesis,
-                              Lambda, SQS, DynamoDB, and CloudWatch for
-                              serverless architecture
+                              Experienced in using monorepo pattern with Vue3
+                              frontend and NestJS microservices backend in
+                              TypeScript
+                            </li>
+                            <li class="text-sm">
+                              Implemented serverless architecture using AWS
+                              services including Kinesis, Lambda, SQS, DynamoDB
+                              and CloudWatch
                             </li>
                             <li class="text-sm">
                               Managed containerized applications using Docker
-                              and LocalStack for AWS environment simulation
+                              and LocalStack for local AWS environment
+                              simulation
                             </li>
                             <li class="text-sm">
-                              Implemented comprehensive testing using Jest and
-                              Cypress for unit and e2e testing
+                              Monitored and troubleshooted incidents through
+                              CloudWatch logs and Sentry error tracking
                             </li>
                             <li class="text-sm">
-                              Maintained and deployed features through Gitlab
-                              CICD pipeline using YAML configurations
+                              Implemented comprehensive testing using Jest for
+                              unit tests and Cypress for end-to-end testing
+                            </li>
+                            <li class="text-sm">
+                              Configured and maintained Gitlab CICD pipelines
+                              using YAML for deployments to staging, UAT and
+                              production
+                            </li>
+                            <li class="text-sm">
+                              Primary maintainer of EIS repository, responsible
+                              for development, issue resolution and release
+                              management
+                            </li>
+                            <li class="text-sm">
+                              Performed Linux operations to monitor and
+                              troubleshoot application performance in Ubuntu and
+                              Windows environments using MeshCentral
                             </li>
                           </template>
                           <template
@@ -382,24 +406,40 @@ onMounted(() => {
                             "
                           >
                             <li class="text-sm">
-                              Managed support and bug fixes for the SBO module,
-                              the largest component in RONPOS
+                              Member of Site Business Operation (SBO) Team which
+                              is the largest component in RONPOS, handling core
+                              platform development and maintenance
                             </li>
                             <li class="text-sm">
-                              Developed efficient SQL queries for tables with
-                              billions of rows, implementing database indexing
+                              Tech stack: Laravel, Vue, VueX, NestJS
+                              Microservices, Docker, AWS, MySQL, PostgreSQL and
+                              REST APIs
+                            </li>
+
+                            <li class="text-sm">
+                              Enhanced system workflows by implementing dynamic
+                              input calculations for report generation,
+                              improving user experience
                             </li>
                             <li class="text-sm">
-                              Enhanced system workflows to improve user
-                              experience in report generation
+                              Proactively learned new technologies and tools to
+                              deliver high-quality solutions while maintaining
+                              code readability
+                            </li>
+                            <li class="text-sm">
+                              Actively engaged with team members to solicit
+                              feedback, address critical issues, and offer
+                              assistance as needed
                             </li>
                             <li class="text-sm">
                               Collaborated with senior developers on new feature
-                              development
+                              development while continuously improving code
+                              structure through knowledge sharing
                             </li>
                             <li class="text-sm">
-                              Utilized tech stack including Laravel, Vue, VueX,
-                              NestJS Microservices, Docker, and AWS
+                              Developed and optimized SQL queries for tables
+                              with 1B+ rows through efficient indexing and query
+                              structuring
                             </li>
                           </template>
                           <template
@@ -408,19 +448,31 @@ onMounted(() => {
                             "
                           >
                             <li class="text-sm">
-                              Developed mobile app screens using React Native
-                              and Nativewind CSS
+                              Tech stack: React Native, TypeScript, Nativewind,
+                              RTK Query for mobile; Laravel, Livewire, MySQL,
+                              AlpineJS for backend CMS
                             </li>
                             <li class="text-sm">
-                              Implemented RTK Query for API handling and Redux
-                              for state management
+                              Converted Figma designs into multiple working
+                              mobile app screens by learning React Native for
+                              in-house app development
                             </li>
                             <li class="text-sm">
-                              Created bulk import feature using Google Sheets
-                              integration in Laravel CMS
+                              Set up API endpoints and response interfaces using
+                              TypeScript types and RTK Query for API handling
                             </li>
                             <li class="text-sm">
-                              Proactively identified and resolved backend issues
+                              Developed MVP mobile app using Nativewind CSS,
+                              React Native and Redux for state management
+                            </li>
+                            <li class="text-sm">
+                              Created bulk import feature in Laravel CMS using
+                              Google Sheets integration to facilitate data entry
+                              via spreadsheet templates
+                            </li>
+                            <li class="text-sm">
+                              Proactively gathered new tasks, resolved backend
+                              issues and suggested workflow improvements
                             </li>
                           </template>
                         </div>
@@ -428,7 +480,7 @@ onMounted(() => {
                     </div>
                   </div>
                   <div
-                    class="absolute left-0 top-4 bottom-0 w-px bg-border -translate-x-1/2"
+                    class="absolute left-0 top-6 bottom-0 w-px bg-border -translate-x-1/2"
                   ></div>
                 </div>
               </div>
