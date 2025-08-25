@@ -28,15 +28,7 @@ onMounted(async () => {
   blog.value = getBlogBySlug(slug);
 
   if (blog.value) {
-    try {
-      const response = await fetch(`/src/data/${blog.value.content}`);
-      content.value = await response.text();
-      renderedContent.value = renderMarkdown(content.value);
-    } catch (error) {
-      console.error("Error loading blog content:", error);
-      content.value = "**Error loading blog content**";
-      renderedContent.value = renderMarkdown(content.value);
-    }
+    renderedContent.value = renderMarkdown(blog.value.content);
   }
 });
 </script>

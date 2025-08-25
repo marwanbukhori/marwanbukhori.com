@@ -1,4 +1,5 @@
 import { ref, computed } from "vue";
+import { blogContents } from "@/data/blog-posts";
 
 export interface Author {
   name: string;
@@ -28,7 +29,7 @@ export function useBlogs() {
       slug: "building-modern-portfolio-vue3-typescript",
       description:
         "A deep dive into creating a modern, type-safe portfolio website using Vue 3, TypeScript, and Tailwind CSS.",
-      content: "content/building-modern-portfolio-vue3-typescript.md",
+      content: blogContents["building-modern-portfolio-vue3-typescript"],
       coverImage: "/blog/portfolio-cover.png",
       publishedAt: "2024-03-15",
       author: {
@@ -46,7 +47,7 @@ export function useBlogs() {
       slug: "optimizing-database-performance-scale",
       description:
         "Lessons learned from optimizing MySQL databases handling billions of rows in a production environment.",
-      content: "content/optimizing-database-performance-scale.md",
+      content: blogContents["optimizing-database-performance-scale"],
       coverImage: "/blog/database-optimization.png",
       publishedAt: "2024-03-10",
       author: {
