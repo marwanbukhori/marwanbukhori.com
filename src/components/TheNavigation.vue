@@ -29,6 +29,16 @@ import { Menu } from "lucide-vue-next";
           Home
         </router-link>
         <router-link
+          to="/about"
+          class="text-sm font-medium transition-colors hover:text-foreground/80"
+          :class="{
+            'text-foreground': $route.path === '/about',
+            'text-foreground/60': $route.path !== '/about',
+          }"
+        >
+          About
+        </router-link>
+        <router-link
           to="/projects"
           class="text-sm font-medium transition-colors hover:text-foreground/80"
           :class="{
@@ -37,16 +47,6 @@ import { Menu } from "lucide-vue-next";
           }"
         >
           Projects
-        </router-link>
-        <router-link
-          to="/certifications"
-          class="text-sm font-medium transition-colors hover:text-foreground/80"
-          :class="{
-            'text-foreground': $route.path === '/certifications',
-            'text-foreground/60': $route.path !== '/certifications',
-          }"
-        >
-          Certifications
         </router-link>
         <router-link
           to="/blog"
@@ -58,6 +58,17 @@ import { Menu } from "lucide-vue-next";
         >
           Blog
         </router-link>
+        <router-link
+          to="/certifications"
+          class="text-sm font-medium transition-colors hover:text-foreground/80"
+          :class="{
+            'text-foreground': $route.path === '/certifications',
+            'text-foreground/60': $route.path !== '/certifications',
+          }"
+        >
+          Certifications
+        </router-link>
+
         <router-link
           to="/contact"
           class="text-sm font-medium transition-colors hover:text-foreground/80"
@@ -91,6 +102,16 @@ import { Menu } from "lucide-vue-next";
                 Home
               </router-link>
               <router-link
+                to="/about"
+                class="text-lg font-medium transition-colors hover:text-foreground/80"
+                :class="{
+                  'text-foreground': $route.path === '/about',
+                  'text-foreground/60': $route.path !== '/about',
+                }"
+              >
+                About
+              </router-link>
+              <router-link
                 to="/projects"
                 class="text-lg font-medium transition-colors hover:text-foreground/80"
                 :class="{
@@ -99,16 +120,6 @@ import { Menu } from "lucide-vue-next";
                 }"
               >
                 Projects
-              </router-link>
-              <router-link
-                to="/certifications"
-                class="text-lg font-medium transition-colors hover:text-foreground/80"
-                :class="{
-                  'text-foreground': $route.path === '/certifications',
-                  'text-foreground/60': $route.path !== '/certifications',
-                }"
-              >
-                Certifications
               </router-link>
               <router-link
                 to="/blog"
@@ -120,6 +131,17 @@ import { Menu } from "lucide-vue-next";
               >
                 Blog
               </router-link>
+              <router-link
+                to="/certifications"
+                class="text-lg font-medium transition-colors hover:text-foreground/80"
+                :class="{
+                  'text-foreground': $route.path === '/certifications',
+                  'text-foreground/60': $route.path !== '/certifications',
+                }"
+              >
+                Certifications
+              </router-link>
+
               <router-link
                 to="/contact"
                 class="text-lg font-medium transition-colors hover:text-foreground/80"

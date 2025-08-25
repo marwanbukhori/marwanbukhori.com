@@ -12,6 +12,7 @@ import {
   BlogPost,
   Certifications,
   Contact,
+  About,
 } from "@/views";
 
 // Create router
@@ -22,6 +23,11 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: Home,
+    },
+    {
+      path: "/about",
+      name: "about",
+      component: About,
     },
     {
       path: "/projects",

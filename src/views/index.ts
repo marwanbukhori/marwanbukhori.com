@@ -1,4 +1,5 @@
 export { default as Home } from "./Home.vue";
+export { default as About } from "./About.vue";
 export { default as Projects } from "./Projects.vue";
 export { default as ProjectDetails } from "./ProjectDetails.vue";
 export { default as Blog } from "./Blog.vue";

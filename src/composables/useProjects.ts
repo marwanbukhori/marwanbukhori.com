@@ -12,8 +12,8 @@ export interface Project {
     live: string | null;
     github: string | null;
   };
-  category?: string;
   featured?: boolean;
+  category?: string;
   completedAt?: string;
   duration?: string;
   overview?: string;
@@ -43,6 +43,7 @@ export function useProjects() {
       },
       completedAt: "2023-12",
       duration: "8 months",
+      featured: true,
       overview:
         "A comprehensive e-invoicing system built for RONPOS POS system, serving major clients in the oil and gas industry. The system handles high-volume invoice processing with real-time data synchronization.",
       technicalDetails:
@@ -70,6 +71,7 @@ export function useProjects() {
       },
       completedAt: "2023-06",
       duration: "12 months",
+      featured: true,
       overview:
         "A core business operations module that handles critical data processing and reporting functions for RONPOS. The system processes billions of records while maintaining high performance and reliability.",
       technicalDetails:
@@ -97,6 +99,7 @@ export function useProjects() {
       },
       completedAt: "2024-01",
       duration: "2 months",
+      featured: true,
       overview:
         "A modern, responsive portfolio website built to showcase my work and skills. The site features a clean, minimalist design with smooth animations and a focus on user experience.",
       technicalDetails:
@@ -133,12 +136,17 @@ export function useProjects() {
     return projects.value.find((p) => p.id === id) || null;
   };
 
+  const getFeaturedProjects = (): Project[] => {
+    return projects.value.filter((p) => p.featured).slice(0, 3);
+  };
+
   return {
     projects,
     filterTypes,
     stats,
     DEFAULT_IMAGE,
     handleImageError,
+    getFeaturedProjects,
     getProjectById,
   };
 }
