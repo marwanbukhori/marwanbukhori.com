@@ -1,6 +1,7 @@
-import { ref, computed } from 'vue';
+import { ref, computed } from "vue";
 
 export interface Project {
+  id: string;
   title: string;
   description: string;
   image: string;
@@ -11,11 +12,19 @@ export interface Project {
     live: string | null;
     github: string | null;
   };
+  category?: string;
+  featured?: boolean;
+  completedAt?: string;
+  duration?: string;
+  overview?: string;
+  technicalDetails?: string;
+  challenges?: string;
 }
 
 export function useProjects() {
   const projects = ref<Project[]>([
     {
+      id: "1",
       title: "RONPOS E-Invoice System",
       description:
         "Microservice for handling e-invoicing in RONPOS POS system, serving major clients like Shell and BH Petrol.",
@@ -32,8 +41,17 @@ export function useProjects() {
         live: null,
         github: null,
       },
+      completedAt: "2023-12",
+      duration: "8 months",
+      overview:
+        "A comprehensive e-invoicing system built for RONPOS POS system, serving major clients in the oil and gas industry. The system handles high-volume invoice processing with real-time data synchronization.",
+      technicalDetails:
+        "Built using a microservices architecture with NestJS and Vue 3. Leverages AWS services including Kinesis for real-time data streaming, Lambda for serverless processing, SQS for message queuing, and DynamoDB for scalable data storage.",
+      challenges:
+        "The main challenge was handling high-volume data processing while maintaining system reliability. This was addressed through careful architecture design, implementing retry mechanisms, and extensive monitoring. Another challenge was ensuring data consistency across multiple systems, which was solved using event-driven architecture and robust error handling.",
     },
     {
+      id: "2",
       title: "Site Business Operation Module",
       description:
         "Core module in RONPOS for managing business operations, handling large-scale data processing and reporting.",
@@ -50,8 +68,17 @@ export function useProjects() {
         live: null,
         github: null,
       },
+      completedAt: "2023-06",
+      duration: "12 months",
+      overview:
+        "A core business operations module that handles critical data processing and reporting functions for RONPOS. The system processes billions of records while maintaining high performance and reliability.",
+      technicalDetails:
+        "Built with Laravel and Vue.js, utilizing MySQL for data storage. Implements advanced database optimization techniques including partitioning, indexing, and query optimization. Uses Docker for containerization and AWS for cloud infrastructure.",
+      challenges:
+        "The biggest challenge was optimizing performance for tables with billions of rows. This was solved through careful database design, implementing efficient indexing strategies, and query optimization. Another challenge was maintaining data consistency during high-volume processing, which was addressed through transaction management and robust error handling.",
     },
     {
+      id: "3",
       title: "Individual Portfolio",
       description:
         "Modern, responsive personal portfolio website built with Vue 3 and Tailwind CSS.",
@@ -68,29 +95,42 @@ export function useProjects() {
         live: "https://marwanbukhori.dev",
         github: "https://github.com/marwanbukhori/portfolio",
       },
+      completedAt: "2024-01",
+      duration: "2 months",
+      overview:
+        "A modern, responsive portfolio website built to showcase my work and skills. The site features a clean, minimalist design with smooth animations and a focus on user experience.",
+      technicalDetails:
+        "Built using Vue 3 with the Composition API and TypeScript for better code organization and type safety. The UI is styled using Tailwind CSS and shadcn-vue components for a consistent and modern look.",
+      challenges:
+        "The main challenge was creating a responsive design that works well across all devices while maintaining a consistent look and feel. This was solved using Tailwind CSS's responsive utilities and careful component structure planning.",
     },
   ]);
 
   const filterTypes = ["All", "Professional", "Individual", "Freelance"];
 
   const stats = computed(() => {
-    const allTechnologies = projects.value.flatMap(p => p.technologies);
+    const allTechnologies = projects.value.flatMap((p) => p.technologies);
     const uniqueTechnologies = new Set(allTechnologies);
 
     return {
       total: projects.value.length,
-      professional: projects.value.filter(p => p.type === "Professional").length,
-      individual: projects.value.filter(p => p.type === "Individual").length,
-      freelance: projects.value.filter(p => p.type === "Freelance").length,
+      professional: projects.value.filter((p) => p.type === "Professional")
+        .length,
+      individual: projects.value.filter((p) => p.type === "Individual").length,
+      freelance: projects.value.filter((p) => p.type === "Freelance").length,
       technologies: uniqueTechnologies.size,
     };
   });
 
-  const DEFAULT_IMAGE = '/images/default.png';
+  const DEFAULT_IMAGE = "/images/default.png";
 
   const handleImageError = (event: Event) => {
     const img = event.target as HTMLImageElement;
     img.src = DEFAULT_IMAGE;
+  };
+
+  const getProjectById = (id: string): Project | null => {
+    return projects.value.find((p) => p.id === id) || null;
   };
 
   return {
@@ -99,5 +139,6 @@ export function useProjects() {
     stats,
     DEFAULT_IMAGE,
     handleImageError,
+    getProjectById,
   };
 }

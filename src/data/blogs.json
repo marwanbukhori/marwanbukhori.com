@@ -1,0 +1,48 @@
+{
+  "title": "Blog",
+  "description": "Sharing my thoughts, experiences, and technical discoveries.",
+  "categories": [
+    "Development",
+    "DevOps",
+    "Architecture",
+    "Best Practices",
+    "Tutorials",
+    "Career"
+  ],
+  "blogs": [
+    {
+      "id": "1",
+      "title": "Building a Modern Portfolio with Vue 3 and TypeScript",
+      "slug": "building-modern-portfolio-vue3-typescript",
+      "description": "A deep dive into creating a modern, type-safe portfolio website using Vue 3, TypeScript, and Tailwind CSS.",
+      "content": "content/building-modern-portfolio-vue3-typescript.md",
+      "coverImage": "/blog/portfolio-cover.png",
+      "publishedAt": "2024-03-15",
+      "author": {
+        "name": "Marwan Bukhori",
+        "avatar": "/images/profile/marwanbukhori.jpeg"
+      },
+      "category": "Development",
+      "tags": ["Vue.js", "TypeScript", "Tailwind CSS", "Web Development"],
+      "readingTime": "8 min",
+      "featured": true
+    },
+    {
+      "id": "2",
+      "title": "Optimizing Database Performance at Scale",
+      "slug": "optimizing-database-performance-scale",
+      "description": "Lessons learned from optimizing MySQL databases handling billions of rows in a production environment.",
+      "content": "content/optimizing-database-performance-scale.md",
+      "coverImage": "/blog/database-optimization.png",
+      "publishedAt": "2024-03-10",
+      "author": {
+        "name": "Marwan Bukhori",
+        "avatar": "/images/profile/marwanbukhori.jpeg"
+      },
+      "category": "Development",
+      "tags": ["Database", "MySQL", "Performance", "Optimization"],
+      "readingTime": "12 min",
+      "featured": true
+    }
+  ]
+}

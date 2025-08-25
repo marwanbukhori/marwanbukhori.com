@@ -1,39 +1,62 @@
-import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
-import App from './App.vue'
-import './style.css'
+import { createApp } from "vue";
+import { createRouter, createWebHistory } from "vue-router";
+import App from "./App.vue";
+import "./style.css";
 
 // Import views
-import { Home, Projects, Certifications, Contact } from '@/views'
+import {
+  Home,
+  Projects,
+  ProjectDetails,
+  Blog,
+  BlogPost,
+  Certifications,
+  Contact,
+} from "@/views";
 
 // Create router
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home
+      path: "/",
+      name: "home",
+      component: Home,
     },
     {
-      path: '/projects',
-      name: 'projects',
-      component: Projects
+      path: "/projects",
+      name: "projects",
+      component: Projects,
     },
     {
-      path: '/certifications',
-      name: 'certifications',
-      component: Certifications
+      path: "/projects/:id",
+      name: "project-details",
+      component: ProjectDetails,
     },
     {
-      path: '/contact',
-      name: 'contact',
-      component: Contact
-    }
-  ]
-})
+      path: "/certifications",
+      name: "certifications",
+      component: Certifications,
+    },
+    {
+      path: "/contact",
+      name: "contact",
+      component: Contact,
+    },
+    {
+      path: "/blog",
+      name: "blog",
+      component: Blog,
+    },
+    {
+      path: "/blog/:slug",
+      name: "blog-post",
+      component: BlogPost,
+    },
+  ],
+});
 
 // Create and mount app
-const app = createApp(App)
-app.use(router)
-app.mount('#app')
+const app = createApp(App);
+app.use(router);
+app.mount("#app");

@@ -6,13 +6,27 @@
       "id": "1",
       "title": "Portfolio Website",
       "description": "Personal portfolio website built with Vue 3 and Tailwind CSS",
+      "type": "Personal",
       "image": "/projects/portfolio.png",
       "technologies": ["Vue", "TypeScript", "Tailwind CSS", "Vite"],
       "category": "Web Development",
-      "github": "https://github.com/marwanbukhori/portfolio",
-      "demo": "https://marwanbukhori.dev",
+      "links": {
+        "github": "https://github.com/marwanbukhori/portfolio",
+        "live": "https://marwanbukhori.dev"
+      },
       "featured": true,
-      "completedAt": "2024-01"
+      "completedAt": "2024-01",
+      "duration": "2 months",
+      "overview": "A modern, responsive portfolio website built to showcase my work and skills. The site features a clean, minimalist design with smooth animations and a focus on user experience.",
+      "highlights": [
+        "Implemented responsive design using Tailwind CSS",
+        "Built with Vue 3 Composition API and TypeScript",
+        "Integrated dynamic routing for project details",
+        "Added dark mode support",
+        "Optimized performance with lazy loading"
+      ],
+      "technicalDetails": "The website is built using Vue 3 with the Composition API for better code organization and TypeScript for type safety. The UI is styled using Tailwind CSS and shadcn/vue components for a consistent and modern look. The site is hosted on Vercel for optimal performance and reliability.",
+      "challenges": "One of the main challenges was implementing a responsive design that works well across all devices while maintaining a consistent look and feel. This was solved by using Tailwind CSS's responsive utilities and careful planning of the component structure. Another challenge was optimizing the performance of the site, which was addressed through lazy loading of images and components, and careful consideration of bundle size."
     }
   ],
   "categories": [

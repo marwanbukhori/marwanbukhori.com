@@ -107,7 +107,8 @@ const selectedFilter = ref("All");
               selectedFilter === 'All' || p.type === selectedFilter
           )"
           :key="project.title"
-          class="flex flex-col overflow-hidden group hover:shadow-lg transition-all duration-300"
+          class="flex flex-col overflow-hidden group hover:shadow-lg transition-all duration-300 cursor-pointer"
+          @click="$router.push(`/projects/${project.id}`)"
         >
           <!-- Project Image -->
           <div class="relative aspect-video overflow-hidden bg-muted">
@@ -153,23 +154,22 @@ const selectedFilter = ref("All");
           </CardContent>
 
           <CardFooter class="flex gap-2">
-            <Button v-if="project.links.live" variant="default" size="sm">
+            <Button
+              variant="default"
+              size="sm"
+              @click="$router.push(`/projects/${project.id}`)"
+            >
+              View Details
+            </Button>
+            <Button v-if="project.links?.live" variant="outline" size="sm">
               <a :href="project.links.live" target="_blank" class="w-full">
                 View Live
               </a>
             </Button>
-            <Button v-if="project.links.github" variant="outline" size="sm">
+            <Button v-if="project.links?.github" variant="outline" size="sm">
               <a :href="project.links.github" target="_blank" class="w-full">
                 View Code
               </a>
-            </Button>
-            <Button
-              v-if="!project.links.live && !project.links.github"
-              variant="outline"
-              size="sm"
-              disabled
-            >
-              Private Project
             </Button>
           </CardFooter>
         </Card>

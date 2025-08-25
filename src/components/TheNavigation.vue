@@ -23,7 +23,7 @@ import { Menu } from "lucide-vue-next";
           class="text-sm font-medium transition-colors hover:text-foreground/80"
           :class="{
             'text-foreground': $route.path === '/',
-            'text-foreground/60': $route.path !== '/'
+            'text-foreground/60': $route.path !== '/',
           }"
         >
           Home
@@ -33,7 +33,7 @@ import { Menu } from "lucide-vue-next";
           class="text-sm font-medium transition-colors hover:text-foreground/80"
           :class="{
             'text-foreground': $route.path === '/projects',
-            'text-foreground/60': $route.path !== '/projects'
+            'text-foreground/60': $route.path !== '/projects',
           }"
         >
           Projects
@@ -43,17 +43,27 @@ import { Menu } from "lucide-vue-next";
           class="text-sm font-medium transition-colors hover:text-foreground/80"
           :class="{
             'text-foreground': $route.path === '/certifications',
-            'text-foreground/60': $route.path !== '/certifications'
+            'text-foreground/60': $route.path !== '/certifications',
           }"
         >
           Certifications
+        </router-link>
+        <router-link
+          to="/blog"
+          class="text-sm font-medium transition-colors hover:text-foreground/80"
+          :class="{
+            'text-foreground': $route.path.startsWith('/blog'),
+            'text-foreground/60': !$route.path.startsWith('/blog'),
+          }"
+        >
+          Blog
         </router-link>
         <router-link
           to="/contact"
           class="text-sm font-medium transition-colors hover:text-foreground/80"
           :class="{
             'text-foreground': $route.path === '/contact',
-            'text-foreground/60': $route.path !== '/contact'
+            'text-foreground/60': $route.path !== '/contact',
           }"
         >
           Contact
@@ -75,7 +85,7 @@ import { Menu } from "lucide-vue-next";
                 class="text-lg font-medium transition-colors hover:text-foreground/80"
                 :class="{
                   'text-foreground': $route.path === '/',
-                  'text-foreground/60': $route.path !== '/'
+                  'text-foreground/60': $route.path !== '/',
                 }"
               >
                 Home
@@ -85,7 +95,7 @@ import { Menu } from "lucide-vue-next";
                 class="text-lg font-medium transition-colors hover:text-foreground/80"
                 :class="{
                   'text-foreground': $route.path === '/projects',
-                  'text-foreground/60': $route.path !== '/projects'
+                  'text-foreground/60': $route.path !== '/projects',
                 }"
               >
                 Projects
@@ -95,17 +105,27 @@ import { Menu } from "lucide-vue-next";
                 class="text-lg font-medium transition-colors hover:text-foreground/80"
                 :class="{
                   'text-foreground': $route.path === '/certifications',
-                  'text-foreground/60': $route.path !== '/certifications'
+                  'text-foreground/60': $route.path !== '/certifications',
                 }"
               >
                 Certifications
+              </router-link>
+              <router-link
+                to="/blog"
+                class="text-lg font-medium transition-colors hover:text-foreground/80"
+                :class="{
+                  'text-foreground': $route.path.startsWith('/blog'),
+                  'text-foreground/60': !$route.path.startsWith('/blog'),
+                }"
+              >
+                Blog
               </router-link>
               <router-link
                 to="/contact"
                 class="text-lg font-medium transition-colors hover:text-foreground/80"
                 :class="{
                   'text-foreground': $route.path === '/contact',
-                  'text-foreground/60': $route.path !== '/contact'
+                  'text-foreground/60': $route.path !== '/contact',
                 }"
               >
                 Contact
