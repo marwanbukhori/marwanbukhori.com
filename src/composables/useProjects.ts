@@ -140,7 +140,7 @@ export function useProjects() {
     },
     {
       id: "studyatinnovative",
-      title: "StudyAtInnovative.com",
+      title: "StudyAtInnovative.my",
       description:
         "Conversion-focused landing page for Innovative University College (IUC) diploma programs with DPI bursary.",
       image: "/projects/studyatinnovative.png",
@@ -162,7 +162,7 @@ export function useProjects() {
         "Dynamic intake month label that auto-updates every month — no manual edits",
       ],
       links: {
-        live: "https://studyatinnovative.com",
+        live: "https://studyatinnovative.my",
         github: null,
       },
       completedAt: "2025-10",
