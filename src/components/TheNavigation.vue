@@ -49,16 +49,6 @@ import { Menu } from "lucide-vue-next";
           Projects
         </router-link>
         <router-link
-          to="/blog"
-          class="text-sm font-medium transition-colors hover:text-foreground/80"
-          :class="{
-            'text-foreground': $route.path.startsWith('/blog'),
-            'text-foreground/60': !$route.path.startsWith('/blog'),
-          }"
-        >
-          Blog
-        </router-link>
-        <router-link
           to="/certifications"
           class="text-sm font-medium transition-colors hover:text-foreground/80"
           :class="{
@@ -120,16 +110,6 @@ import { Menu } from "lucide-vue-next";
                 }"
               >
                 Projects
-              </router-link>
-              <router-link
-                to="/blog"
-                class="text-lg font-medium transition-colors hover:text-foreground/80"
-                :class="{
-                  'text-foreground': $route.path.startsWith('/blog'),
-                  'text-foreground/60': !$route.path.startsWith('/blog'),
-                }"
-              >
-                Blog
               </router-link>
               <router-link
                 to="/certifications"

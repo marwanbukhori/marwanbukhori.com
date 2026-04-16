@@ -3,45 +3,126 @@
   "description": "A showcase of my recent work and side projects.",
   "projects": [
     {
-      "id": "1",
+      "id": "commit-life",
+      "title": "Commit Garden",
+      "description": "Gamified habit tracker where daily habits grow a virtual pixel-art farm.",
+      "type": "SaaS",
+      "image": "/projects/commit-life.png",
+      "technologies": ["Next.js 16", "TypeScript", "Prisma", "PostgreSQL", "Stripe", "NextAuth", "Tailwind CSS", "Docker"],
+      "category": "Web Development",
+      "links": {
+        "github": "https://github.com/marwanbukhori/commit-life",
+        "live": "https://commitgarden.com"
+      },
+      "featured": true,
+      "completedAt": "2025-12",
+      "duration": "Ongoing",
+      "overview": "A gamified habit tracker that turns daily discipline into a growing pixel-art ecosystem. Users commit habits and see their farm evolve over time, with a virtual pet system reinforcing streaks and consistency.",
+      "highlights": [
+        "Built full-stack on Next.js 16 App Router with Server Actions for mutations",
+        "Designed transactional habit commit flow using Prisma + PostgreSQL to prevent double-counting",
+        "Integrated Stripe subscriptions for Pro tier",
+        "NextAuth JWT session management",
+        "Containerized with Nginx + Docker Compose, deployed on DigitalOcean"
+      ],
+      "technicalDetails": "Containerized monolith architecture: Nginx reverse-proxies a Next.js app backed by PostgreSQL, orchestrated with Docker Compose. Uses Prisma ORM with transactional writes for habit commits, Server Actions for mutations, and NextAuth for session auth. Stripe handles billing. Deployed on a DigitalOcean Droplet for cost-predictable hosting.",
+      "challenges": "Ensuring habit commits are idempotent across timezones and preventing double-counting on rapid taps required a transactional Prisma write path with unique constraints per (user, habit, day). Shipping a self-hosted containerized stack on a single droplet while keeping zero-downtime deploys was the other big challenge — solved with Nginx as the front door and rolling container restarts."
+    },
+    {
+      "id": "rerumah",
+      "title": "ReRumah (SewaKita)",
+      "description": "All-in-one property management platform for Malaysian landlords and tenants.",
+      "type": "SaaS",
+      "image": "/projects/rerumah.png",
+      "technologies": ["React 19", "Vite", "TypeScript", "Supabase", "PostgreSQL", "Row-Level Security", "PWA", "Tailwind CSS", "toyyibPay"],
+      "category": "Web Development",
+      "links": {
+        "live": "https://rerumah.my"
+      },
+      "featured": true,
+      "completedAt": "2026-04",
+      "duration": "Ongoing",
+      "overview": "A bilingual (Malay-first) PWA that helps Malaysian landlords manage tenancies, billing, payments, and agreements in one place. Built to be lightweight enough to feel native on mobile while running entirely on a Supabase backend.",
+      "highlights": [
+        "Single-backend architecture on Supabase — Auth, Postgres, RLS, and Storage",
+        "Row-Level Security policies for strict per-landlord data isolation",
+        "Installable PWA with offline-friendly UX",
+        "toyyibPay payment gateway integration for rent collection",
+        "WhatsApp deep links for zero-cost tenant messaging",
+        "Malay-first bilingual UI built for the local market"
+      ],
+      "technicalDetails": "React 19 + Vite frontend talking directly to Supabase — no custom backend. Data isolation is enforced at the database layer via RLS policies rather than in application code, so leaks are structurally impossible. Payments go through toyyibPay (migrated from Billplz). PWA manifest + service worker give an install-to-home-screen experience without the App Store tax.",
+      "challenges": "Choosing Supabase + RLS over a traditional Node/Express backend meant every access pattern had to be expressible as a SQL policy — good for security, demanding to design. Migrating payment gateway from Billplz to toyyibPay mid-flight while paying users were transacting required careful feature flagging. Balancing Malay-first copy with English fallbacks across a typed component tree was more design work than expected."
+    },
+    {
+      "id": "fire",
+      "title": "Fire — AI Sales Agent",
+      "description": "Internal tool: AI-powered diploma sales agent generating TikTok content and running a WhatsApp CRM.",
+      "type": "Internal",
+      "image": "/images/default.png",
+      "technologies": ["Hono", "React", "TypeScript", "Prisma", "SQLite", "Claude API", "Wassenger API"],
+      "category": "Backend Development",
+      "links": {},
+      "featured": true,
+      "completedAt": "2026-03",
+      "duration": "Ongoing",
+      "overview": "An internal tool that automates the top of a diploma education sales funnel. It generates TikTok content ideas, drafts scripts, and runs the downstream WhatsApp conversations through a lightweight CRM portal — all powered by Claude as the reasoning layer.",
+      "highlights": [
+        "Hono-based API server with typed routes and Prisma ORM",
+        "Claude API integration for content generation and conversational responses",
+        "Wassenger integration for programmatic WhatsApp messaging at scale",
+        "Internal React portal for sales team to review and action leads",
+        "SQLite for simple, portable local-first data storage"
+      ],
+      "technicalDetails": "Hono was picked over Express for its edge-ready ergonomics and first-class TypeScript support. Prisma + SQLite keeps the data layer dead simple for an internal tool. The Claude API drives both content generation and reply drafting, with prompt patterns tuned for a specific education-sales tone. Wassenger handles the WhatsApp side without requiring WhatsApp Business API overhead.",
+      "challenges": "Keeping AI-generated replies on-brand and safe required iterating on prompt structure and adding human-in-the-loop review for high-stakes messages. Reliable WhatsApp delivery at volume meant building queueing and retry logic around Wassenger. Internal tool, so no public repo — trade-off is velocity for polish."
+    },
+    {
+      "id": "portfolio",
       "title": "Portfolio Website",
-      "description": "Personal portfolio website built with Vue 3 and Tailwind CSS",
+      "description": "This site — personal portfolio built with Vue 3 and Tailwind CSS.",
       "type": "Personal",
       "image": "/projects/portfolio.png",
-      "technologies": ["Vue", "TypeScript", "Tailwind CSS", "Vite"],
+      "technologies": ["Vue 3", "TypeScript", "Tailwind CSS", "Vite", "shadcn/vue"],
       "category": "Web Development",
       "links": {
         "github": "https://github.com/marwanbukhori/portfolio",
-        "live": "https://marwanbukhori.dev"
+        "live": "https://marwanbukhori.com"
       },
-      "featured": true,
+      "featured": false,
       "completedAt": "2024-01",
       "duration": "2 months",
-      "overview": "A modern, responsive portfolio website built to showcase my work and skills. The site features a clean, minimalist design with smooth animations and a focus on user experience.",
+      "overview": "A modern, responsive portfolio website built to showcase my work and skills. Clean, minimalist design with smooth animations and a focus on user experience.",
       "highlights": [
-        "Implemented responsive design using Tailwind CSS",
-        "Built with Vue 3 Composition API and TypeScript",
-        "Integrated dynamic routing for project details",
-        "Added dark mode support",
-        "Optimized performance with lazy loading"
+        "Responsive design using Tailwind CSS",
+        "Vue 3 Composition API with TypeScript",
+        "Dynamic routing for project details",
+        "Dark mode support",
+        "Lazy-loaded images and components"
       ],
-      "technicalDetails": "The website is built using Vue 3 with the Composition API for better code organization and TypeScript for type safety. The UI is styled using Tailwind CSS and shadcn/vue components for a consistent and modern look. The site is hosted on Vercel for optimal performance and reliability.",
-      "challenges": "One of the main challenges was implementing a responsive design that works well across all devices while maintaining a consistent look and feel. This was solved by using Tailwind CSS's responsive utilities and careful planning of the component structure. Another challenge was optimizing the performance of the site, which was addressed through lazy loading of images and components, and careful consideration of bundle size."
+      "technicalDetails": "Built with Vue 3 Composition API and TypeScript, styled with Tailwind CSS and shadcn/vue components. Centralized JSON-driven content model for zero-code updates. Hosted on Vercel.",
+      "challenges": "Main challenge was keeping content updates friction-free so the site stays current — solved with a centralized JSON data layer plus typed composables, so adding a project or cert is a one-file change."
     }
   ],
   "categories": [
     "Web Development",
-    "Mobile Development",
     "Backend Development",
     "DevOps",
-    "UI/UX Design"
+    "AI / LLM"
   ],
   "technologies": [
-    "Vue",
-    "React",
     "TypeScript",
     "Node.js",
+    "NestJS",
+    "Next.js",
+    "Vue",
+    "React",
+    "Laravel",
     "Python",
+    "Hono",
+    "Prisma",
+    "PostgreSQL",
+    "Supabase",
     "Tailwind CSS",
     "Docker",
     "AWS"

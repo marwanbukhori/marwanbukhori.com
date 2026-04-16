@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useProjects } from "@/composables/useProjects";
-import { useBlogs } from "@/composables/useBlogs";
 import TheNavigation from "@/components/TheNavigation.vue";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -18,12 +17,10 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import { Github, Linkedin, ArrowRight } from "lucide-vue-next";
+import { Github, Linkedin, ArrowRight, Download, MapPin } from "lucide-vue-next";
 
-const { getFeaturedBlogs } = useBlogs();
 const { getFeaturedProjects } = useProjects();
 
-const featuredBlogs = getFeaturedBlogs();
 const featuredProjects = getFeaturedProjects();
 
 const images = [
@@ -78,14 +75,6 @@ const images = [
   },
 ];
 
-const formatDate = (date: string) => {
-  return new Date(date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-};
-
 const handleImageError = (event: Event, placeholder: string) => {
   const img = event.target as HTMLImageElement;
   img.src = placeholder;
@@ -116,14 +105,30 @@ const handleImageError = (event: Event, placeholder: string) => {
             Hi, I'm Marwan Bukhori 👋
           </h1>
           <p class="text-xl text-muted-foreground">
-            A software engineer passionate about building impactful solutions.
-            Currently focused on backend development and cloud architecture.
+            Fullstack &amp; backend software engineer with 4 years of industry
+            experience. Currently on a planned career break building my own
+            SaaS products. I work across Node.js, NestJS, Laravel, and Python —
+            and I'm always happy to pick up a new stack.
           </p>
-          <div class="flex justify-center gap-4">
+          <div class="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+            <MapPin class="w-4 h-4" />
+            <span>Klang Valley, Malaysia — open to hybrid roles</span>
+          </div>
+          <div class="flex flex-wrap justify-center gap-4">
             <Button size="lg" asChild>
-              <router-link to="/about">More About Me</router-link>
+              <a
+                href="/documents/MarwanBukhori_Resume.pdf"
+                download
+                class="flex items-center gap-2"
+              >
+                <Download class="w-4 h-4" />
+                Download Resume
+              </a>
             </Button>
             <Button variant="outline" size="lg" asChild>
+              <router-link to="/projects">View Projects</router-link>
+            </Button>
+            <Button variant="ghost" size="lg" asChild>
               <router-link to="/contact">Get in Touch</router-link>
             </Button>
           </div>
@@ -208,72 +213,6 @@ const handleImageError = (event: Event, placeholder: string) => {
               <router-link :to="`/projects/${project.id}`">
                 View Details
               </router-link>
-            </Button>
-          </CardFooter>
-        </Card>
-      </div>
-    </section>
-
-    <!-- Latest Blog Posts -->
-    <section class="container px-4 py-16 space-y-8">
-      <div class="flex justify-between items-center">
-        <div class="space-y-2">
-          <h2 class="text-3xl font-bold tracking-tight">Latest Posts</h2>
-          <p class="text-lg text-muted-foreground">
-            Thoughts, learnings, and experiences.
-          </p>
-        </div>
-        <Button variant="ghost" size="sm" asChild>
-          <router-link to="/blog" class="flex items-center gap-2">
-            View All
-            <ArrowRight class="w-4 h-4" />
-          </router-link>
-        </Button>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Card
-          v-for="blog in featuredBlogs"
-          :key="blog.id"
-          class="flex flex-col overflow-hidden group hover:shadow-lg transition-all duration-300"
-        >
-          <div class="relative aspect-video overflow-hidden bg-muted">
-            <img
-              :src="blog.coverImage"
-              :alt="blog.title"
-              @error="handleImageError($event, '/images/default.png')"
-              class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-              loading="lazy"
-            />
-            <div class="absolute top-2 right-2">
-              <Badge>{{ blog.category }}</Badge>
-            </div>
-          </div>
-          <CardHeader>
-            <CardTitle class="line-clamp-2">{{ blog.title }}</CardTitle>
-            <CardDescription class="line-clamp-2">
-              {{ blog.description }}
-            </CardDescription>
-          </CardHeader>
-          <CardContent class="flex-1">
-            <div class="flex flex-wrap gap-2">
-              <Badge v-for="tag in blog.tags" :key="tag" variant="secondary">
-                {{ tag }}
-              </Badge>
-            </div>
-          </CardContent>
-          <CardFooter class="flex items-center justify-between text-sm">
-            <div class="flex items-center gap-2">
-              <img
-                :src="blog.author.avatar"
-                :alt="blog.author.name"
-                @error="handleImageError($event, '/images/default.png')"
-                class="w-6 h-6 rounded-full"
-                loading="lazy"
-              />
-              <span>{{ formatDate(blog.publishedAt) }}</span>
-            </div>
-            <Button variant="ghost" size="sm" asChild>
-              <router-link :to="`/blog/${blog.slug}`">Read More</router-link>
             </Button>
           </CardFooter>
         </Card>

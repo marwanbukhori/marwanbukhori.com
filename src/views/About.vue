@@ -22,7 +22,7 @@ const progress = ref(0);
 
 // Actual data based on resume
 const stats = {
-  totalProjects: 3,
+  totalProjects: 7,
   totalCertifications: 3,
 };
 
@@ -177,9 +177,9 @@ onMounted(() => {
                   <div class="flex items-center">
                     <span class="text-muted-foreground">Email:</span>
                     <a
-                      href="mailto:your@email.com"
+                      href="mailto:marwanbukhori.dev@gmail.com"
                       class="ml-2 hover:text-primary"
-                      >marwanbukhori.dev@email.com</a
+                      >marwanbukhori.dev@gmail.com</a
                     >
                   </div>
                   <div class="flex items-center">
@@ -251,10 +251,13 @@ onMounted(() => {
           <div class="space-y-4">
             <h1 class="text-3xl font-bold tracking-tight">Welcome! 👋</h1>
             <p class="text-lg text-muted-foreground text-justify">
-              A backend developer with passion and strong desire to expand
-              knowledge across multiple different domains within the tech
-              industry. See myself as a soft. engineer who's driven to deliver
-              impactful, meaningful work.
+              Fullstack &amp; backend engineer with 4 years of industry
+              experience — most recently on the RONPOS core team shipping a POS
+              platform used across thousands of petrol stations nationwide.
+              Currently on a planned career break, building my own SaaS
+              products (Commit Garden, ReRumah). Comfortable across Node.js,
+              NestJS, Laravel, and Python, and always happy to pick up a new
+              stack.
               <span class="italic font-bold"
                 >Aspired to be 1% better every day.</span
               >
@@ -268,11 +271,11 @@ onMounted(() => {
             <Card>
               <CardHeader class="pb-2">
                 <CardTitle class="text-sm font-medium"
-                  >Years of Experiences</CardTitle
+                  >Years of Experience</CardTitle
                 >
               </CardHeader>
               <CardContent>
-                <div class="text-2xl font-bold">2.5+</div>
+                <div class="text-2xl font-bold">4+</div>
               </CardContent>
             </Card>
             <router-link
