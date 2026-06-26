@@ -139,6 +139,119 @@ export function useProjects() {
         "Keeping AI-generated replies on-brand and safe required prompt iteration plus human-in-the-loop review for high-stakes messages. Reliable WhatsApp delivery at volume meant building queueing and retry around Wassenger.",
     },
     {
+      id: "belanjawan",
+      title: "Belanjawan",
+      description:
+        "Personal-finance PWA for Malaysian households — track spending, scan receipts, and auto-generate LHDN tax-relief and zakat reports.",
+      image: "/images/default.png",
+      technologies: [
+        "Next.js 16",
+        "TypeScript",
+        "Supabase",
+        "PostgreSQL",
+        "Row-Level Security",
+        "Tesseract.js",
+        "shadcn/ui",
+        "Tailwind CSS",
+        "PWA",
+        "Playwright",
+      ],
+      type: "Individual",
+      highlights: [
+        "Single Supabase backend — Postgres, Auth, Storage, Edge Functions, and pg_cron — with no separate API server",
+        "Client-side receipt OCR via Tesseract.js to capture transactions straight from a photo",
+        "Auto-generates LHDN tax-relief summaries and zakat calculations tailored to Malaysian households",
+        "Installable, mobile-first PWA that also works on desktop",
+        "Three-tier test suite: vitest unit tests, RLS integration tests against local Supabase, and Playwright mobile e2e",
+      ],
+      links: {
+        live: "https://belanjawan.vercel.app",
+        github: "https://github.com/marwanbukhori/belanjawan",
+      },
+      completedAt: "2026-05",
+      duration: "Ongoing",
+      featured: false,
+      overview:
+        "A personal-finance PWA built for Malaysian households. Belanjawan tracks day-to-day spending, captures receipts through on-device OCR, and turns a year of transactions into LHDN tax-relief summaries and zakat calculations — replacing spreadsheets and shoeboxes of receipts.",
+      technicalDetails:
+        "Next.js 16 (App Router) frontend on a pure Supabase backend — Postgres with Row-Level Security for per-household data isolation, Auth, Storage for receipt images, Edge Functions, and pg_cron for scheduled jobs. Receipt OCR runs client-side with Tesseract.js, with an LLM-vision upgrade planned. The codebase ships with unit (vitest), integration (RLS against a local Supabase stack), and Playwright mobile e2e tests.",
+      challenges:
+        "Modelling Malaysian-specific tax-relief categories and zakat thresholds accurately meant encoding LHDN rules into the data layer. Enforcing strict per-household isolation through Postgres RLS — rather than application code — made cross-household leaks structurally impossible, but required every access pattern to be expressible as a SQL policy.",
+    },
+    {
+      id: "source-of-truth",
+      title: "Source of Truth",
+      description:
+        "Full-stack knowledge platform that centralizes structured documentation for backend and cloud concepts.",
+      image: "/images/default-2.png",
+      technologies: [
+        "NestJS",
+        "Vue 3",
+        "TypeScript",
+        "PostgreSQL",
+        "JWT",
+        "Docker Compose",
+        "Swagger",
+      ],
+      type: "Individual",
+      highlights: [
+        "Monorepo pairing a NestJS API with a Vue 3 frontend",
+        "JWT-based authentication with registration, login, and protected routes",
+        "PostgreSQL persistence with migrations and seed data",
+        "Swagger / OpenAPI documentation for the API",
+        "Separate Docker Compose stacks for development and production",
+      ],
+      links: {
+        live: "https://source-of-truth.vercel.app",
+        github: "https://github.com/marwanbukhori/source-of-truth",
+      },
+      completedAt: "2025-01",
+      duration: "Ongoing",
+      featured: false,
+      overview:
+        "A knowledge platform designed to be the definitive 'source of truth' for backend and cloud programming concepts — structured, versioned documentation for development teams, built as a NestJS + Vue monorepo with auth, a documented API, and Dockerized dev/prod environments.",
+      technicalDetails:
+        "NestJS backend and Vue 3 frontend in a single monorepo. Authentication is JWT-based with route guards. Data lives in PostgreSQL with migrations and seeding, and the API is documented with Swagger. Two Docker Compose configurations cleanly separate development and production, with migrations and seeds run through the backend container.",
+      challenges:
+        "The core design challenge was structuring documentation content for long-term maintainability — versioning, categorization, and search — while keeping the backend production-grade with proper auth, API docs, and reproducible Docker environments from day one.",
+    },
+    {
+      id: "vinland",
+      title: "Engage360",
+      description:
+        "Flutter volunteer-management app connecting organizations with volunteers through QR/PIN check-ins, gamification, and real-time chat.",
+      image: "/images/default.png",
+      technologies: [
+        "Flutter",
+        "Dart",
+        "Firebase Auth",
+        "Cloud Firestore",
+        "Firebase Storage",
+        "Provider",
+      ],
+      type: "Individual",
+      highlights: [
+        "Role-based experience for volunteers and organization admins, with per-organization data isolation",
+        "Activity check-in by QR-code scan or a unique 6-digit PIN, with real-time status updates",
+        "Gamification — points for check-ins, redeemable for vouchers and rewards",
+        "Real-time per-activity group chat plus an in-app notification center",
+        "Local reminders an hour before an activity, and an admin dashboard with live metrics",
+      ],
+      links: {
+        live: null,
+        github: "https://github.com/marwanbukhori/vinland",
+      },
+      completedAt: "2026-01",
+      duration: "Ongoing",
+      featured: false,
+      overview:
+        "Engage360 is a Flutter + Firebase mobile app connecting organizations with volunteers. Volunteers browse and check in to activities (QR or PIN), earn points redeemable for rewards, and chat in real time; organizations create and manage activities, generate access codes, and track participation from an admin dashboard — all with strict per-organization data isolation.",
+      technicalDetails:
+        "Flutter (Dart) frontend on a Firebase backend: Authentication for volunteer/organization roles, Cloud Firestore as the real-time database for activities, users, chats, and registrations, and Firebase Storage for posters and avatars. State is managed with Provider and StreamBuilder for live updates, with a feature-first project structure and Firestore security rules that restrict each admin to their own organization's data.",
+      challenges:
+        "Designing a check-in flow that works both online (QR scan) and manually (6-digit PIN) while keeping statuses consistent in real time across volunteer and admin views. Enforcing multi-tenant isolation through Firestore security rules so each organization sees only its own data.",
+    },
+    {
       id: "studyatinnovative",
       title: "StudyAtInnovative.my",
       description:
